@@ -1,4 +1,4 @@
-package config
+package initializers
 
 import (
 	"log"
@@ -10,11 +10,11 @@ type Config struct {
 	PORT string `mapstructure:"PORT"`
 }
 
-func load_config(path string) (config Config, err error) {
+func LoadConfig(path string) (config Config, err error) {
 
 	viper := viper.New()
 
-	viper.AddConfigPath(".")
+	viper.AddConfigPath(path)
 	viper.SetConfigType("env")
 	viper.SetConfigName("app")
 

@@ -2,13 +2,23 @@ package main
 
 import (
 	"fmt"
+	"log"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/rajakumardev/gotodo/initializers"
 )
 
 func main() {
-	const PORT string = ":8080"
-	fmt.Println("Booting up gotodo api server...")
+
+	// Load configuration
+	config, err := initializers.LoadConfig(".")
+
+	if err != nil {
+		log.Fatal("Initialization Failed while reading configuration file...")
+	}
+
+	PORT := config.PORT
+	fmt.Printf("Booting up gotodo api server on PORT %s...", PORT)
 	app := fiber.New()
 	app.Get("/ping", func(c *fiber.Ctx) error {
 
