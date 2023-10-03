@@ -7,7 +7,11 @@ import (
 )
 
 type Config struct {
-	PORT string `mapstructure:"PORT"`
+	PORT       string `mapstructure:"PORT"`
+	DBHOST     string `mapstructure:"DBHOST"`
+	DBUSER     string `mapstructure:"DBUSER"`
+	DBPASSWORD string `mapstructure:"DBPASSWORD"`
+	DBPORT     string `mapstructure:"DBPORT"`
 }
 
 func LoadConfig(path string) (config Config, err error) {
